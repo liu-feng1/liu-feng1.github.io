@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+  </head>
+  <body>
+    <h1>测试</h1>
+    <script>
+      const stringToQuery = function (str) {
+        return str.split("&").reduce(function (obj, item) {
+          var parts = item.split("=");
+          obj[parts[0]] = parts[1];
+          return obj;
+        }, {});
+      };
+      window.onload = function () {
+        const query = stringToQuery(window.location.search.slice(1));
+        if (query.pwdToken) {
+          wx.miniProgram.redirectTo()
+        }
+      };
+    </script>
+  </body>
+</html>
